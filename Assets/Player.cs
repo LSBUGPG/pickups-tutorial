@@ -1,25 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 10;
     public Rigidbody body;
-    Vector3 move;
+    public float force = 2;
 
-    void Start()
-    {
-        Application.targetFrameRate = 30;
-    }
+    int coins;
 
     void Update()
     {
-        move = Vector3.right * Input.GetAxis("Horizontal") + Vector3.forward * Input.GetAxis("Vertical");
+        if (Input.GetKey(KeyCode.Space))
+        {
+            body.AddForce(Vector3.right * force, ForceMode.Impulse);
+        }
     }
 
-    void FixedUpdate()
+    public void AddCoin()
     {
-        body.transform.Translate(move * speed * Time.deltaTime);
+        coins++;
+        Debug.Log($"Coins collected: {coins}");
     }
 }

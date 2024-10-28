@@ -1,16 +1,23 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Pickup : MonoBehaviour
 {
-    public UnityEvent onPickup;
+    public float speed = 360;
+    public AudioClip clink;
+
+    void Update()
+    {
+        transform.Rotate(0, speed * Time.deltaTime, 0, Space.World);
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Player player = other.GetComponent<Player>();
+        if (player != null)
         {
-            onPickup.Invoke();
-            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(clink, Camera.main.transform.position);
+            player.AddCoin();
+            gameObject.SetActive(false);
         }
     }
 }
