@@ -49,17 +49,48 @@ This creates a prefab which we can use to scatter instances of this coin pickup 
 > ![image](https://github.com/user-attachments/assets/cce8cb28-28f0-4941-8ca1-f636818ed026)
 >
 > With the prefab open, drag or select the gold material in element 0 of the `Mesh Renderer` and `Materials` section.
->
-> After these changes, your prefab should look like this:
->
-> ![image](https://github.com/user-attachments/assets/984bdbe0-c145-40cf-82ee-d480a513b07a)
+
+Your prefab should look like this:
+
+![image](https://github.com/user-attachments/assets/984bdbe0-c145-40cf-82ee-d480a513b07a)
+
+> [!CAUTION]
+> For this tutorial, make sure the `Is Trigger` option is ticked. Without this option, the player will collide with the coin causing both objects to get deflected. It is possible to make it work with collision, but you would need to use the `OnCollision...` functions rather than `OnTrigger...` below.
 
 ## Create a platform
 
 We'll need somewhere to place our coins. So let's create a simple platform. Start by creating a cube and name it "Platform". Change the x scale to 30 and make sure the position is 0, 0, 0.
+
+![image](https://github.com/user-attachments/assets/75ece902-52af-4efc-b289-229e1959ddfc)
 
 > [!TIP]
 > To make this stand out, create a new material and call it "Grass." Set the colour to green and apply this material to the platform.
 
 ## Place the coins
 
+Take the coin in the scene and place it somewhere on the platform. Then duplicate by choosing the `Duplicate` option from the context menu, or type `Ctrl D`. This will create a copy at the same location so you will need to move the copy to a new location to see it. Create as many copies as you need to make a good demonstration.
+
+![image](https://github.com/user-attachments/assets/62a9599a-567d-423a-a94c-436fad655f25)
+
+> [!NOTE]
+> The positions illustrated above are:
+> | GameObject | X position | Y position | Z position |
+> | :--- | ---: | ---: | ---: |
+> | Coin | -5 | 1 | 0 |
+> | Coin (1) | -3 | 1 | 0 |
+> | Coin (2) | -1 | 1 | 0 |
+> | Coin (3) |  1 | 1 | 0 |
+> | Coin (4) |  3 | 1 | 0 |
+> | Coin (5) |  5 | 1 | 0 |
+
+## Create a player object
+
+To test the coins we need an object to represent the player.
+
+- Create a cube and name it "Player"
+- Place it next to the coins
+- Add a `Rigidbody` component
+
+> [!CAUTION]
+> For the purposes of this tutorial, the gravity option should not be set. Applying gravity in this simple example will cause the cube object to experience friction with the platform surface and tip over when pushed. This might cause the cube to fall off of the platform before hitting any of the coins.
+>![image](https://github.com/user-attachments/assets/fc29e548-0c60-4892-9c6f-89ad3966a5aa)
