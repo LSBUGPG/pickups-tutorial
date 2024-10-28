@@ -374,6 +374,8 @@ Playing the sound effect at the position of the camera ensures that the volume a
 > [!CAUTION]
 > Using an `AudioSource` component for this kind of sound effect won't work as when the object is switched off, any sound effects that is playing are also stopped.
 
+The final pickup script should look something like this:
+
 ```cs
 using UnityEngine;
 
