@@ -39,20 +39,27 @@ https://github.com/user-attachments/assets/21d94515-f8e4-44f5-99a6-88db01f3c6df
 
 This creates a prefab which we can use to scatter instances of this coin pickup around.
 
-To make it stand out I'll add a new material. Create a new Material called "Gold". Change the `Metallic` slider up to 1. Change the colour to yellow. 
-
-![image](https://github.com/user-attachments/assets/cb17cd32-b403-4736-bf1b-3676fcc1f4f5)
-
-To edit a prefab, you can open it by double clicking on the prefab object in the asset window.
-
-![image](https://github.com/user-attachments/assets/cce8cb28-28f0-4941-8ca1-f636818ed026)
-
-With the prefab open, drag or select the gold material in element 0 of the `Mesh Renderer` and `Materials` section.
-
-After these changes, your prefab should look like this:
-
-![image](https://github.com/user-attachments/assets/984bdbe0-c145-40cf-82ee-d480a513b07a)
+> [!TIP]
+> To make it stand out, create a new Material called "Gold". Change the `Metallic` slider up to 1. Change the colour to yellow. 
+>
+> ![image](https://github.com/user-attachments/assets/cb17cd32-b403-4736-bf1b-3676fcc1f4f5)
+>
+> To edit a prefab, you can open it by double clicking on the prefab object in the asset window.
+>
+> ![image](https://github.com/user-attachments/assets/cce8cb28-28f0-4941-8ca1-f636818ed026)
+>
+> With the prefab open, drag or select the gold material in element 0 of the `Mesh Renderer` and `Materials` section.
+>
+> After these changes, your prefab should look like this:
+>
+> ![image](https://github.com/user-attachments/assets/984bdbe0-c145-40cf-82ee-d480a513b07a)
 
 ## Create a platform
 
-We'll need somewhere to place our coins. So let's create a simple platform
+We'll need somewhere to place our coins. So let's create a simple platform. Start by creating a cube and name it "Platform". Change the x scale to 30 and make sure the position is 0, 0, 0.
+
+> [!TIP]
+> To make this stand out, create a new material and call it "Grass." Set the colour to green and apply this material to the platform.
+
+## Place the coins
+
