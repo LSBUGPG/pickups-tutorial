@@ -11,7 +11,7 @@ This tutorial was created with Unity 2022.3 LTS and Microsoft Visual Studio Comm
 If you need help installing Unity you can find many online tutorials such as:
 https://learn.unity.com/tutorial/install-the-unity-hub-and-editor
 
-You will also need to know how to create an empty project, add primitive objects to your scene, create blank scripts, create prefabs, and run projects from within the editor. If you need help with this, there is a short video demonstrating how to do all of these things here: 
+You will also need to know how to create an empty project, add primitive objects to your scene, create blank scripts, create prefabs, and run projects from within the editor. If you need help with this, there is a short video demonstrating how to do most of these things here: 
 
 https://www.youtube.com/watch?v=eQpWPfP1T6g
 
@@ -42,17 +42,17 @@ This creates a prefab which we can use to scatter instances of this coin pickup 
 > [!TIP]
 > To make it stand out, create a new Material called "Gold". Change the `Metallic` slider up to 1. Change the colour to yellow. 
 >
-> ![image](https://github.com/user-attachments/assets/cb17cd32-b403-4736-bf1b-3676fcc1f4f5)
+> ![the inspector window on the gold material](https://github.com/user-attachments/assets/cb17cd32-b403-4736-bf1b-3676fcc1f4f5)
 >
 > To edit a prefab, you can open it by double clicking on the prefab object in the asset window.
 >
-> ![image](https://github.com/user-attachments/assets/cce8cb28-28f0-4941-8ca1-f636818ed026)
+> ![the prefab in the prefab editor](https://github.com/user-attachments/assets/cce8cb28-28f0-4941-8ca1-f636818ed026)
 >
 > With the prefab open, drag or select the gold material in element 0 of the `Mesh Renderer` and `Materials` section.
 
 Your prefab should look like this:
 
-![image](https://github.com/user-attachments/assets/984bdbe0-c145-40cf-82ee-d480a513b07a)
+![the inspector window on the prefab](https://github.com/user-attachments/assets/984bdbe0-c145-40cf-82ee-d480a513b07a)
 
 > [!CAUTION]
 > For this tutorial, make sure the `Is Trigger` option is ticked. Without this option, the player will collide with the coin causing both objects to get deflected. It is possible to make pickups work with collision rather than triggers, but you would need to use the `OnCollision...` functions rather than `OnTrigger...` below.
@@ -61,7 +61,7 @@ Your prefab should look like this:
 
 We'll need somewhere to place our coins. So let's create a simple platform. Start by creating a cube and name it "Platform". Change the x scale to 30 and make sure the position is 0, 0, 0.
 
-![image](https://github.com/user-attachments/assets/75ece902-52af-4efc-b289-229e1959ddfc)
+![the transform settings for the platform object](https://github.com/user-attachments/assets/75ece902-52af-4efc-b289-229e1959ddfc)
 
 > [!TIP]
 > To make this stand out, create a new material and call it "Grass." Set the colour to green and apply this material to the platform.
@@ -70,7 +70,7 @@ We'll need somewhere to place our coins. So let's create a simple platform. Star
 
 Take the coin in the scene and place it somewhere on the platform. Then duplicate by choosing the `Duplicate` option from the context menu, or type `Ctrl D`. This will create a copy at the same location so you will need to move the copy to a new location to see it. Create as many copies as you need to make a good demonstration.
 
-![image](https://github.com/user-attachments/assets/62a9599a-567d-423a-a94c-436fad655f25)
+![the coins laid out on the platform](https://github.com/user-attachments/assets/62a9599a-567d-423a-a94c-436fad655f25)
 
 > [!NOTE]
 > The positions illustrated above are:
@@ -93,7 +93,7 @@ To test the coins we need an object to represent the player.
 
 > [!CAUTION]
 > For the purposes of this tutorial, the gravity option should not be set. Applying gravity in this simple example will cause the cube object to experience friction with the platform surface and tip over when pushed. This might cause the cube to fall off of the platform before hitting any of the coins.
->![image](https://github.com/user-attachments/assets/fc29e548-0c60-4892-9c6f-89ad3966a5aa)
+>![the rigid body settings on the player](https://github.com/user-attachments/assets/fc29e548-0c60-4892-9c6f-89ad3966a5aa)
 
 Creating player control is not an objective of this tutorial, so to create some movement we'll add a simple script to add a force to push the player when the space bar is pressed.
 
@@ -124,17 +124,17 @@ This script will test for keyboard input every frame. If the space bar is presse
 
 Add this script to the player object and drag the player's rigid body component into the body slot attached to the script.
 
-![image](https://github.com/user-attachments/assets/1c2720ca-0c48-4cdf-807a-5e8cb71ba2f1)
+![the player script settings on the player](https://github.com/user-attachments/assets/1c2720ca-0c48-4cdf-807a-5e8cb71ba2f1)
 
-With this set up, you be able to test the script by running the project and pressing the space bar.
+With this set up, you will be able to test the script by running the project and pressing the space bar.
 
 The player object should move to the right at 2 Unity units per second and go through each of the coin objects. The coins shouldn't react in this test.
 
 ## Create a pickup script
 
-To get Unity to detect that the player has touched a coin one of the two needs to have a rigid body physics component. Because we have set up the player to have one, that is enough.
+To get Unity to detect that the player has touched a coin, one of the two needs to have a rigid body physics component. Because we have set up the player to have one, that is enough.
 
-When Unity detects that a player and coin object intersect in a physics update frame it calls `OnCollision...` or `OnTrigger...` functions on both objects. Since we have set the coin colliders to be triggers, both objects will receive `OnTriggerEnter` calls on the frame that this first happens. We can use this to collect the pickup.
+When Unity detects that a player and coin object intersect in a physics update frame it calls `OnCollision...` or `OnTrigger...` functions on both objects. Since we have set the coin colliders to be triggers, Unity will call `OnTriggerEnter` in the coin script on the frame that this first happens. We can use this to collect the pickup.
 
 Create a new script, and call it `Pickup`. In this script, add an `OnTriggerEnter` function.
 
@@ -172,7 +172,7 @@ In this line:
 - `<Player>` is the type of the component that we are looking for
 - `()` means that we aren't providing any arguments to the `GetComponent` function
 
-After executing this line, the variable we are calling `player` should either contain a reference to a `Player` component, or `null` is the object that entered the trigger didn't have one.
+After executing this line, the variable we are calling `player` should either contain a reference to a `Player` component, or `null` if the object that entered the trigger didn't have one.
 
 Here we can use an `if` statement to test if we got a player or not.
 
@@ -217,26 +217,10 @@ To test this out, click run in Unity and press the space bar. If it works, each 
 
 To count up the coins as they are collected we can call a function on the player script to increase the count when the pickup is turned off.
 
-In the player script we need to add a variable to count up the coins.
+In the player script we need to add a variable to count up the coins. By convention we add new variables at the top of the class definition.
 
 ```cs
-using UnityEngine;
-
-public class Player : MonoBehaviour
-{
-    public Rigidbody body;
-    public float force = 2;
-
-    int coins;
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            body.AddForce(Vector3.right * force, ForceMode.Impulse);
-        }
-    }
-}
+int coins;
 ```
 
 In this variable definition:
@@ -249,29 +233,11 @@ By not specifying the `public` keyword we are by default declaring the variable 
 > [!TIP]
 > We could make this variable public, but it is good practice to limit the access to variables. Instead we'll provide a `public` function called `AddCoin` to narrow the possible interactions with other objects.
 
-Next, we'll add a function `AddCoin`:
+Next, we'll add a function `AddCoin`. This can go after the `Update` function:
 
 ```cs
-using UnityEngine;
-
-public class Player : MonoBehaviour
+public void AddCoin()
 {
-    public Rigidbody body;
-    public float force = 2;
-
-    int coins;
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            body.AddForce(Vector3.right * force, ForceMode.Impulse);
-        }
-    }
-
-    public void AddCoin()
-    {
-    }
 }
 ```
 
@@ -294,9 +260,37 @@ In the `Debug.Log` line:
 - `""` everything between the quotes will be included in the output
 - `Coins collected: ` is the literal text of the message
 - `{}` within a format string, the curly brackets refer to an expression to be evaluated as part of the output
-- `coins` refers to the script member variable coins
+- `coins` refers to the script member variable "coins"
 
 In this instruction, the value of the `coins` variable will be embedded into the output string where the `{coins}` is. So if the `coins` variable contains `2` then the output string will be `Coins collected: 2`
+
+Here is the modified script with the `AddCoin` function:
+
+```cs
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    public Rigidbody body;
+    public float force = 2;
+
+    int coins;
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            body.AddForce(Vector3.right * force, ForceMode.Impulse);
+        }
+    }
+
+    public void AddCoin()
+    {
+        coins++;
+        Debug.Log($"Coins collected: {coins}");
+    }
+}
+```
 
 Of course, the `AddCoin` function won't do anything until we add an instruction in the pickup script to call it.
 
@@ -319,7 +313,7 @@ public class Pickup : MonoBehaviour
 
 With this code in place, we can test the counting function by running the game, pressing the space bar, and watching the console output for messages.
 
-![image](https://github.com/user-attachments/assets/e82a6a80-00b9-4563-b06e-3828b2006373)
+![the console window showing each coin collected](https://github.com/user-attachments/assets/e82a6a80-00b9-4563-b06e-3828b2006373)
 
 ## Adding polish
 
@@ -372,7 +366,7 @@ AudioSource.PlayClipAtPoint(clink, Camera.main.transform.position);
 Playing the sound effect at the position of the camera ensures that the volume and the stereo position of the sound is consistent.
 
 > [!CAUTION]
-> Using an `AudioSource` component for this kind of sound effect won't work as when the object is switched off, any sound effects that is playing are also stopped.
+> Using an `AudioSource` component for this kind of sound effect won't work, as when the object is switched off, any sound effects that are playing are also stopped.
 
 The final pickup script should look something like this:
 
