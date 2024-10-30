@@ -26,7 +26,7 @@ In this tutorial our objectives are to create collectable pickups such as you wo
 To demonstrate we are going to create a scene with some coins on a platform. And we are going to push a block (representing the player) into the coins to pick them up.
 
 <video controls>
-    <source src="pickups.mkv" type="video/mkv">
+    <source src="https://raw.githubusercontent.com/LSBUGPG/pickups-tutorial/main/pickups.mkv" type="video/mkv">
 </video>
 
 
