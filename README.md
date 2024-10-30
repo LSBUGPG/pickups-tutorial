@@ -18,7 +18,9 @@ https://www.youtube.com/watch?v=eQpWPfP1T6g
 ## Objectives
 
 In this tutorial our objectives are to create collectable pickups such as you would see in early 3D platform games like Super Mario 64:
+
 ![Super Mario collecting coins](https://cdn.videogamesblogger.com/wp-content/uploads/2011/08/super-mario-3d-land-screenshot-coin-collecting-646x387.jpg)
+
 *Image credit: [Video Games Blogger](https://videogamesblogger.com)*
 
 To demonstrate we are going to create a scene with some coins on a platform. And we are going to push a block (representing the player) into the coins to pick them up.
