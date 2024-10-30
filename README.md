@@ -23,7 +23,10 @@ In this tutorial our objectives are to create collectable pickups such as you wo
 
 To demonstrate we are going to create a scene with some coins on a platform. And we are going to push a block (representing the player) into the coins to pick them up.
 
-https://github.com/user-attachments/assets/21d94515-f8e4-44f5-99a6-88db01f3c6df
+<video controls>
+    <source src="pickups.mkv" type="video/mkv">
+</video>
+
 
 ## Coin pickup prefab
 
